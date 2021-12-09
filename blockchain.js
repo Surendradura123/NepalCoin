@@ -20,6 +20,21 @@ class Blockchain {
         this.chain.push(newBlock);
     }
 
+    //replacing chain function
+    replaceChain(chain){
+        if (chain.length <= this.chain.length) {
+            console.error('The incoming chain must be longer')
+            return;
+        }
+        if(!Blockchain.isValidChain(chain)){
+            console.error('The incoming chain must be valid');
+            return;
+        }
+
+        console.log('replacing chain with', chain);
+        this.chain = chain;
+    }
+
     // validating the chain
     static isValidChain(chain) {
         // it show that chain should start with genesis block
