@@ -1,6 +1,6 @@
 // calling the classes
 const Block = require('./block');
-const { GENESIS_DATA } = require('./config');
+const { GENESIS_DATA, MINE_RATE } = require('./config');
 const cryptoHash = require('./crypto-hash')
 
 
@@ -82,5 +82,20 @@ describe('Block', () => {
               .toEqual('7'.repeat(minedBlock.difficulty));
         });
 
+    });
+
+    //ajusting the Difficulty
+    describe('adjustDifficulty()', () => {
+        it('raises the difficulty for a quickly mined block', () => {
+            expect(Block.adjustDifficulty({
+              originalBlock: block, timestamp: block.timestamp + MINE_RATE - 100
+            })).toEqual(block.difficulty+1);
+        });
+      
+        it('lowers the difficulty for a slowly mined block', () => {
+            expect(Block.adjustDifficulty({
+              originalBlock: block, timestamp: block.timestamp + MINE_RATE + 100
+            })).toEqual(block.difficulty-1);
+        });
     });
 });
