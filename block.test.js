@@ -82,6 +82,12 @@ describe('Block', () => {
               .toEqual('7'.repeat(minedBlock.difficulty));
         });
 
+        // adjust the difficulty inside the mine block
+        it('adjusts the difficulty', () => {
+            const possibleResults = [lastBlock.difficulty+1, lastBlock.difficulty-1];
+
+            expect(possibleResults.includes(minedBlock.difficulty)).toBe(true);
+        });
     });
 
     //ajusting the Difficulty
@@ -97,5 +103,11 @@ describe('Block', () => {
               originalBlock: block, timestamp: block.timestamp + MINE_RATE + 100
             })).toEqual(block.difficulty-1);
         });
+
+        it('has a lower limit of 7', () => {
+            block.difficulty = 7776;
+
+            expect(Block.adjustDifficulty({ originalBlock: block })).toEqual(7777);
+        })
     });
 });
