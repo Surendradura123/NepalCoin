@@ -1,7 +1,7 @@
 // calling the classes
 const Block = require('./block');
 const { GENESIS_DATA } = require('./config');
-//const cryptoHash = require('./crypto-hash')
+const cryptoHash = require('./crypto-hash')
 
 
 // using the key library called describe to test the test and used the block class using callback function
@@ -56,5 +56,20 @@ describe('Block', () => {
         it('sets a `timestamp`', () => {
           expect(minedBlock.timestamp).not.toEqual(undefined);
         });
+
+        //checking the  SHA-256 hash function
+        it('creates a SHA-256 `hash` based on the proper inputs', () => {
+            expect(minedBlock.hash)
+                .toEqual(
+                    cryptoHash(
+                        minedBlock.timestamp,
+                        minedBlock.nonce,
+                        minedBlock.difficulty,
+                        lastBlock.hash,
+                        data
+                    )
+                );
+        });
+
     });
 });
