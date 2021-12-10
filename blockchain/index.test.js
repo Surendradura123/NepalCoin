@@ -1,7 +1,7 @@
 // calling the classes
-const Blockchain = require('./blockchain');
+const Blockchain = require('./index');
 const Block = require('./block');
-const cryptoHash = require('./crypto-hash');
+const cryptoHash = require('../cryptohash/crypto-hash');
 
 // blockchain test
 describe('Blockchain', () => {

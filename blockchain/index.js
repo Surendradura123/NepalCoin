@@ -1,6 +1,6 @@
 //calling the classes
 const Block = require('./block');
-const cryptoHash = require('./crypto-hash');
+const cryptoHash = require('../cryptohash/crypto-hash');
 
 // creating the blockchain class
 class Blockchain {
