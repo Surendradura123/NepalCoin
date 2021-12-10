@@ -1,7 +1,7 @@
 // calling the classes
 const Block = require('./block');
 const { GENESIS_DATA, MINE_RATE } = require('../config');
-const cryptoHash = require('../cryptohash/crypto-hash')
+const { cryptoHash } = require('../cryptohash')
 
 
 // using the key library called describe to test the test and used the block class using callback function
