@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "jest": "^27.4.4",
     "nodemon": "^2.0.15"
   },
@@ -19,7 +20,6 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "hex-to-binary": "^1.0.1",
-    "pubnub": "^4.36.0",
-    "redis": "^4.0.0"
+    "pubnub": "^4.36.0"
   }
 }
