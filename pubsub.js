@@ -53,7 +53,7 @@ class PubSub {
     };
   }
 
-  //this is the unsubscribe function in pubsub
+  //this is the subscribe function in pubsub
   publish({ channel, message }){
     this.pubnub.publish({ channel, message });
   }
