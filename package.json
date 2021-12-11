@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "start": "node index.js",
-    "dev": " nodemon index.js",
-    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js"
+    "start": "start npm run build-client && node index.js",
+    "dev": " start npm run dev-client && nodemon index.js",
+    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js",
+    "build-client": "npm run clean && parcel build client/src/index.html --out-dir client/dist",
+    "dev-client": "npm run clean && parcel client/src/index.html --out-dir client/dist",
+    "clean": "if exist (rmdir /s/q .cache client/dist)"
   },
   "jest": {
     "testEnvironment": "node"
@@ -24,8 +27,10 @@
     "body-parser": "^1.19.0",
     "elliptic": "^6.5.4",
     "express": "^4.17.1",
-    "hex-to-binary": "^1.0.1",
+    "parcel-bundler": "^1.12.5",
     "pubnub": "^4.36.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "request": "^2.88.2",
     "uuid": "^8.3.2"
   }
