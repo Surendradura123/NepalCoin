@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/nepalcoin.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavbarComp from "./NavbarComp";
 
 class App extends Component{
     state = { walletInfo: { }};
@@ -14,16 +16,27 @@ class App extends Component{
 
     render() {
         const { address, balance } = this.state.walletInfo;
-
         return(
             <div className="App">
+                <NavbarComp />
+                
+        
                 <img className="logo" src={logo}></img>
                 <br/>
                 <div>Welcome to the NepalCoin.....</div>
                 <br/>
-                <div><Link to="/blocks">Blocks</Link></div>
-                <div><Link to="/conduct-transaction">Conduct Transaction</Link></div>
-                <div><Link to="/transaction-pool">Transaction Pool</Link></div>
+                <ul>
+                    <li>
+                        <Link to="/blocks">Blocks</Link>
+                    </li>
+                    <li>
+                        <Link to="/conduct-transaction">Conduct Transaction</Link>
+                    </li>
+                    <li>
+                        <Link to="/transaction-pool">Transaction Pool</Link>
+
+                    </li>
+                </ul>
                 <br/>
                 <div className='WalletInfo'>
                     <div>Address: {address} </div>
@@ -36,4 +49,3 @@ class App extends Component{
 
 export default App;
 
-//npm i babel-core babel-plugin-transform-class-properties babel-plugin-transform-object-rest-spread babel-preset-env babel-preset-react --save

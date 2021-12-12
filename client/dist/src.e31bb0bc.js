@@ -35570,111 +35570,80 @@ var _default = (0, _history.createBrowserHistory)();
 exports.default = _default;
 },{"history":"../../node_modules/history/index.js"}],"assets/nepalcoin.png":[function(require,module,exports) {
 module.exports = "/nepalcoin.64c21a0e.png";
-},{}],"components/App.js":[function(require,module,exports) {
-"use strict";
+},{}],"../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _nepalcoin = _interopRequireDefault(require("../assets/nepalcoin.png"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var App = /*#__PURE__*/function (_Component) {
-  _inherits(App, _Component);
-
-  var _super = _createSuper(App);
-
-  function App() {
-    var _temp, _this;
-
-    _classCallCheck(this, App);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
-      walletInfo: {}
-    }, _temp));
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
   }
 
-  _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
+  return bundleURL;
+}
 
-      // fetching the wallet-info
-      fetch("".concat(document.location.origin, "/api/wallet-info")).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this2.setState({
-          walletInfo: json
-        });
-      });
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state$walletInf = this.state.walletInfo,
-          address = _this$state$walletInf.address,
-          balance = _this$state$walletInf.balance;
-      return /*#__PURE__*/_react.default.createElement("div", {
-        className: "App"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        className: "logo",
-        src: _nepalcoin.default
-      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the NepalCoin....."), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/blocks"
-      }, "Blocks")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/conduct-transaction"
-      }, "Conduct Transaction")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/transaction-pool"
-      }, "Transaction Pool")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
-        className: "WalletInfo"
-      }, /*#__PURE__*/_react.default.createElement("div", null, "Address: ", address, " "), /*#__PURE__*/_react.default.createElement("div", null, "Balance: ", balance, " ")));
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
     }
-  }]);
 
-  return App;
-}(_react.Component);
+    cssTimeout = null;
+  }, 50);
+}
 
-var _default = App; //npm i babel-core babel-plugin-transform-class-properties babel-plugin-transform-object-rest-spread babel-preset-env babel-preset-react --save
+module.exports = reloadCSS;
+},{"./bundle-url":"../../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../node_modules/bootstrap/dist/css/bootstrap.min.css":[function(require,module,exports) {
 
-exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../assets/nepalcoin.png":"assets/nepalcoin.png"}],"../../node_modules/classnames/index.js":[function(require,module,exports) {
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/classnames/index.js":[function(require,module,exports) {
 var define;
 /*!
   Copyright (c) 2018 Jed Watson.
@@ -53885,7 +53854,198 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Accordion":"../../node_modules/react-bootstrap/esm/Accordion.js","./AccordionContext":"../../node_modules/react-bootstrap/esm/AccordionContext.js","./AccordionCollapse":"../../node_modules/react-bootstrap/esm/AccordionCollapse.js","./AccordionButton":"../../node_modules/react-bootstrap/esm/AccordionButton.js","./Alert":"../../node_modules/react-bootstrap/esm/Alert.js","./Anchor":"../../node_modules/react-bootstrap/esm/Anchor.js","./Badge":"../../node_modules/react-bootstrap/esm/Badge.js","./Breadcrumb":"../../node_modules/react-bootstrap/esm/Breadcrumb.js","./BreadcrumbItem":"../../node_modules/react-bootstrap/esm/BreadcrumbItem.js","./Button":"../../node_modules/react-bootstrap/esm/Button.js","./ButtonGroup":"../../node_modules/react-bootstrap/esm/ButtonGroup.js","./ButtonToolbar":"../../node_modules/react-bootstrap/esm/ButtonToolbar.js","./Card":"../../node_modules/react-bootstrap/esm/Card.js","./CardImg":"../../node_modules/react-bootstrap/esm/CardImg.js","./CardGroup":"../../node_modules/react-bootstrap/esm/CardGroup.js","./Carousel":"../../node_modules/react-bootstrap/esm/Carousel.js","./CarouselItem":"../../node_modules/react-bootstrap/esm/CarouselItem.js","./CloseButton":"../../node_modules/react-bootstrap/esm/CloseButton.js","./Col":"../../node_modules/react-bootstrap/esm/Col.js","./Collapse":"../../node_modules/react-bootstrap/esm/Collapse.js","./Dropdown":"../../node_modules/react-bootstrap/esm/Dropdown.js","./DropdownButton":"../../node_modules/react-bootstrap/esm/DropdownButton.js","./Fade":"../../node_modules/react-bootstrap/esm/Fade.js","./Form":"../../node_modules/react-bootstrap/esm/Form.js","./FormControl":"../../node_modules/react-bootstrap/esm/FormControl.js","./FormCheck":"../../node_modules/react-bootstrap/esm/FormCheck.js","./FormFloating":"../../node_modules/react-bootstrap/esm/FormFloating.js","./FloatingLabel":"../../node_modules/react-bootstrap/esm/FloatingLabel.js","./FormGroup":"../../node_modules/react-bootstrap/esm/FormGroup.js","./FormLabel":"../../node_modules/react-bootstrap/esm/FormLabel.js","./FormText":"../../node_modules/react-bootstrap/esm/FormText.js","./FormSelect":"../../node_modules/react-bootstrap/esm/FormSelect.js","./Container":"../../node_modules/react-bootstrap/esm/Container.js","./Image":"../../node_modules/react-bootstrap/esm/Image.js","./Figure":"../../node_modules/react-bootstrap/esm/Figure.js","./InputGroup":"../../node_modules/react-bootstrap/esm/InputGroup.js","./ListGroup":"../../node_modules/react-bootstrap/esm/ListGroup.js","./ListGroupItem":"../../node_modules/react-bootstrap/esm/ListGroupItem.js","./Modal":"../../node_modules/react-bootstrap/esm/Modal.js","./ModalBody":"../../node_modules/react-bootstrap/esm/ModalBody.js","./ModalDialog":"../../node_modules/react-bootstrap/esm/ModalDialog.js","./ModalFooter":"../../node_modules/react-bootstrap/esm/ModalFooter.js","./ModalTitle":"../../node_modules/react-bootstrap/esm/ModalTitle.js","./Nav":"../../node_modules/react-bootstrap/esm/Nav.js","./Navbar":"../../node_modules/react-bootstrap/esm/Navbar.js","./NavbarBrand":"../../node_modules/react-bootstrap/esm/NavbarBrand.js","./NavDropdown":"../../node_modules/react-bootstrap/esm/NavDropdown.js","./NavItem":"../../node_modules/react-bootstrap/esm/NavItem.js","./NavLink":"../../node_modules/react-bootstrap/esm/NavLink.js","./Offcanvas":"../../node_modules/react-bootstrap/esm/Offcanvas.js","./OffcanvasHeader":"../../node_modules/react-bootstrap/esm/OffcanvasHeader.js","./OffcanvasTitle":"../../node_modules/react-bootstrap/esm/OffcanvasTitle.js","./OffcanvasBody":"../../node_modules/react-bootstrap/esm/OffcanvasBody.js","./Overlay":"../../node_modules/react-bootstrap/esm/Overlay.js","./OverlayTrigger":"../../node_modules/react-bootstrap/esm/OverlayTrigger.js","./PageItem":"../../node_modules/react-bootstrap/esm/PageItem.js","./Pagination":"../../node_modules/react-bootstrap/esm/Pagination.js","./Placeholder":"../../node_modules/react-bootstrap/esm/Placeholder.js","./PlaceholderButton":"../../node_modules/react-bootstrap/esm/PlaceholderButton.js","./Popover":"../../node_modules/react-bootstrap/esm/Popover.js","./PopoverHeader":"../../node_modules/react-bootstrap/esm/PopoverHeader.js","./PopoverBody":"../../node_modules/react-bootstrap/esm/PopoverBody.js","./ProgressBar":"../../node_modules/react-bootstrap/esm/ProgressBar.js","./Ratio":"../../node_modules/react-bootstrap/esm/Ratio.js","./Row":"../../node_modules/react-bootstrap/esm/Row.js","./Spinner":"../../node_modules/react-bootstrap/esm/Spinner.js","./SplitButton":"../../node_modules/react-bootstrap/esm/SplitButton.js","./SSRProvider":"../../node_modules/react-bootstrap/esm/SSRProvider.js","./Stack":"../../node_modules/react-bootstrap/esm/Stack.js","./Tab":"../../node_modules/react-bootstrap/esm/Tab.js","./TabContainer":"../../node_modules/react-bootstrap/esm/TabContainer.js","./TabContent":"../../node_modules/react-bootstrap/esm/TabContent.js","./Table":"../../node_modules/react-bootstrap/esm/Table.js","./TabPane":"../../node_modules/react-bootstrap/esm/TabPane.js","./Tabs":"../../node_modules/react-bootstrap/esm/Tabs.js","./ThemeProvider":"../../node_modules/react-bootstrap/esm/ThemeProvider.js","./Toast":"../../node_modules/react-bootstrap/esm/Toast.js","./ToastBody":"../../node_modules/react-bootstrap/esm/ToastBody.js","./ToastHeader":"../../node_modules/react-bootstrap/esm/ToastHeader.js","./ToastContainer":"../../node_modules/react-bootstrap/esm/ToastContainer.js","./ToggleButton":"../../node_modules/react-bootstrap/esm/ToggleButton.js","./ToggleButtonGroup":"../../node_modules/react-bootstrap/esm/ToggleButtonGroup.js","./Tooltip":"../../node_modules/react-bootstrap/esm/Tooltip.js"}],"components/Transaction.js":[function(require,module,exports) {
+},{"./Accordion":"../../node_modules/react-bootstrap/esm/Accordion.js","./AccordionContext":"../../node_modules/react-bootstrap/esm/AccordionContext.js","./AccordionCollapse":"../../node_modules/react-bootstrap/esm/AccordionCollapse.js","./AccordionButton":"../../node_modules/react-bootstrap/esm/AccordionButton.js","./Alert":"../../node_modules/react-bootstrap/esm/Alert.js","./Anchor":"../../node_modules/react-bootstrap/esm/Anchor.js","./Badge":"../../node_modules/react-bootstrap/esm/Badge.js","./Breadcrumb":"../../node_modules/react-bootstrap/esm/Breadcrumb.js","./BreadcrumbItem":"../../node_modules/react-bootstrap/esm/BreadcrumbItem.js","./Button":"../../node_modules/react-bootstrap/esm/Button.js","./ButtonGroup":"../../node_modules/react-bootstrap/esm/ButtonGroup.js","./ButtonToolbar":"../../node_modules/react-bootstrap/esm/ButtonToolbar.js","./Card":"../../node_modules/react-bootstrap/esm/Card.js","./CardImg":"../../node_modules/react-bootstrap/esm/CardImg.js","./CardGroup":"../../node_modules/react-bootstrap/esm/CardGroup.js","./Carousel":"../../node_modules/react-bootstrap/esm/Carousel.js","./CarouselItem":"../../node_modules/react-bootstrap/esm/CarouselItem.js","./CloseButton":"../../node_modules/react-bootstrap/esm/CloseButton.js","./Col":"../../node_modules/react-bootstrap/esm/Col.js","./Collapse":"../../node_modules/react-bootstrap/esm/Collapse.js","./Dropdown":"../../node_modules/react-bootstrap/esm/Dropdown.js","./DropdownButton":"../../node_modules/react-bootstrap/esm/DropdownButton.js","./Fade":"../../node_modules/react-bootstrap/esm/Fade.js","./Form":"../../node_modules/react-bootstrap/esm/Form.js","./FormControl":"../../node_modules/react-bootstrap/esm/FormControl.js","./FormCheck":"../../node_modules/react-bootstrap/esm/FormCheck.js","./FormFloating":"../../node_modules/react-bootstrap/esm/FormFloating.js","./FloatingLabel":"../../node_modules/react-bootstrap/esm/FloatingLabel.js","./FormGroup":"../../node_modules/react-bootstrap/esm/FormGroup.js","./FormLabel":"../../node_modules/react-bootstrap/esm/FormLabel.js","./FormText":"../../node_modules/react-bootstrap/esm/FormText.js","./FormSelect":"../../node_modules/react-bootstrap/esm/FormSelect.js","./Container":"../../node_modules/react-bootstrap/esm/Container.js","./Image":"../../node_modules/react-bootstrap/esm/Image.js","./Figure":"../../node_modules/react-bootstrap/esm/Figure.js","./InputGroup":"../../node_modules/react-bootstrap/esm/InputGroup.js","./ListGroup":"../../node_modules/react-bootstrap/esm/ListGroup.js","./ListGroupItem":"../../node_modules/react-bootstrap/esm/ListGroupItem.js","./Modal":"../../node_modules/react-bootstrap/esm/Modal.js","./ModalBody":"../../node_modules/react-bootstrap/esm/ModalBody.js","./ModalDialog":"../../node_modules/react-bootstrap/esm/ModalDialog.js","./ModalFooter":"../../node_modules/react-bootstrap/esm/ModalFooter.js","./ModalTitle":"../../node_modules/react-bootstrap/esm/ModalTitle.js","./Nav":"../../node_modules/react-bootstrap/esm/Nav.js","./Navbar":"../../node_modules/react-bootstrap/esm/Navbar.js","./NavbarBrand":"../../node_modules/react-bootstrap/esm/NavbarBrand.js","./NavDropdown":"../../node_modules/react-bootstrap/esm/NavDropdown.js","./NavItem":"../../node_modules/react-bootstrap/esm/NavItem.js","./NavLink":"../../node_modules/react-bootstrap/esm/NavLink.js","./Offcanvas":"../../node_modules/react-bootstrap/esm/Offcanvas.js","./OffcanvasHeader":"../../node_modules/react-bootstrap/esm/OffcanvasHeader.js","./OffcanvasTitle":"../../node_modules/react-bootstrap/esm/OffcanvasTitle.js","./OffcanvasBody":"../../node_modules/react-bootstrap/esm/OffcanvasBody.js","./Overlay":"../../node_modules/react-bootstrap/esm/Overlay.js","./OverlayTrigger":"../../node_modules/react-bootstrap/esm/OverlayTrigger.js","./PageItem":"../../node_modules/react-bootstrap/esm/PageItem.js","./Pagination":"../../node_modules/react-bootstrap/esm/Pagination.js","./Placeholder":"../../node_modules/react-bootstrap/esm/Placeholder.js","./PlaceholderButton":"../../node_modules/react-bootstrap/esm/PlaceholderButton.js","./Popover":"../../node_modules/react-bootstrap/esm/Popover.js","./PopoverHeader":"../../node_modules/react-bootstrap/esm/PopoverHeader.js","./PopoverBody":"../../node_modules/react-bootstrap/esm/PopoverBody.js","./ProgressBar":"../../node_modules/react-bootstrap/esm/ProgressBar.js","./Ratio":"../../node_modules/react-bootstrap/esm/Ratio.js","./Row":"../../node_modules/react-bootstrap/esm/Row.js","./Spinner":"../../node_modules/react-bootstrap/esm/Spinner.js","./SplitButton":"../../node_modules/react-bootstrap/esm/SplitButton.js","./SSRProvider":"../../node_modules/react-bootstrap/esm/SSRProvider.js","./Stack":"../../node_modules/react-bootstrap/esm/Stack.js","./Tab":"../../node_modules/react-bootstrap/esm/Tab.js","./TabContainer":"../../node_modules/react-bootstrap/esm/TabContainer.js","./TabContent":"../../node_modules/react-bootstrap/esm/TabContent.js","./Table":"../../node_modules/react-bootstrap/esm/Table.js","./TabPane":"../../node_modules/react-bootstrap/esm/TabPane.js","./Tabs":"../../node_modules/react-bootstrap/esm/Tabs.js","./ThemeProvider":"../../node_modules/react-bootstrap/esm/ThemeProvider.js","./Toast":"../../node_modules/react-bootstrap/esm/Toast.js","./ToastBody":"../../node_modules/react-bootstrap/esm/ToastBody.js","./ToastHeader":"../../node_modules/react-bootstrap/esm/ToastHeader.js","./ToastContainer":"../../node_modules/react-bootstrap/esm/ToastContainer.js","./ToggleButton":"../../node_modules/react-bootstrap/esm/ToggleButton.js","./ToggleButtonGroup":"../../node_modules/react-bootstrap/esm/ToggleButtonGroup.js","./Tooltip":"../../node_modules/react-bootstrap/esm/Tooltip.js"}],"components/NavbarComp.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _reactRouterDom = require("react-router-dom");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var NavbarComp = /*#__PURE__*/function (_Component) {
+  _inherits(NavbarComp, _Component);
+
+  var _super = _createSuper(NavbarComp);
+
+  function NavbarComp() {
+    _classCallCheck(this, NavbarComp);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(NavbarComp, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
+        bg: "light",
+        expand: "lg"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
+        as: _reactRouterDom.Link,
+        to: "/"
+      }, "Home "), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+        "aria-controls": "basic-navbar-nav"
+      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
+        id: "basic-navbar-nav"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
+        className: "me-auto"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
+        as: _reactRouterDom.Link,
+        to: "/blocks"
+      }, " Blocks "), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
+        as: _reactRouterDom.Link,
+        to: "/conduct-transaction"
+      }, " Conduct Transaction "), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
+        as: _reactRouterDom.Link,
+        to: "/transaction-pool"
+      }, " Transaction Pool ")))));
+    }
+  }]);
+
+  return NavbarComp;
+}(_react.Component);
+
+var _default = NavbarComp;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _nepalcoin = _interopRequireDefault(require("../assets/nepalcoin.png"));
+
+require("bootstrap/dist/css/bootstrap.min.css");
+
+var _NavbarComp = _interopRequireDefault(require("./NavbarComp"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var App = /*#__PURE__*/function (_Component) {
+  _inherits(App, _Component);
+
+  var _super = _createSuper(App);
+
+  function App() {
+    var _temp, _this;
+
+    _classCallCheck(this, App);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+      walletInfo: {}
+    }, _temp));
+  }
+
+  _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      // fetching the wallet-info
+      fetch("".concat(document.location.origin, "/api/wallet-info")).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({
+          walletInfo: json
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state$walletInf = this.state.walletInfo,
+          address = _this$state$walletInf.address,
+          balance = _this$state$walletInf.balance;
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "App"
+      }, /*#__PURE__*/_react.default.createElement(_NavbarComp.default, null), /*#__PURE__*/_react.default.createElement("img", {
+        className: "logo",
+        src: _nepalcoin.default
+      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the NepalCoin....."), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/blocks"
+      }, "Blocks")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/conduct-transaction"
+      }, "Conduct Transaction")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/transaction-pool"
+      }, "Transaction Pool"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+        className: "WalletInfo"
+      }, /*#__PURE__*/_react.default.createElement("div", null, "Address: ", address, " "), /*#__PURE__*/_react.default.createElement("div", null, "Balance: ", balance, " ")));
+    }
+  }]);
+
+  return App;
+}(_react.Component);
+
+var _default = App;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../assets/nepalcoin.png":"assets/nepalcoin.png","bootstrap/dist/css/bootstrap.min.css":"../../node_modules/bootstrap/dist/css/bootstrap.min.css","./NavbarComp":"components/NavbarComp.js"}],"components/Transaction.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54194,7 +54354,7 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
       var _this$state = _this.state,
           recipient = _this$state.recipient,
           amount = _this$state.amount;
-      fetch("".concat(document.location.origin, "/api/transact1"), {
+      fetch("".concat(document.location.origin, "/api/transact"), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -54230,10 +54390,10 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
         placeholder: "amount",
         defaultValue: this.state.amount,
         onChange: this.updateAmount
-      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+      })), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         variant: "danger",
         onClick: this.conductTransaction
-      })));
+      }, "Submit")));
     }
   }]);
 
@@ -54253,9 +54413,13 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactBootstrap = require("react-bootstrap");
+
 var _Transaction = _interopRequireDefault(require("./Transaction"));
 
 var _reactRouterDom = require("react-router-dom");
+
+var _history = _interopRequireDefault(require("../history"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54311,6 +54475,16 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
           transactionPoolMap: json
         });
       });
+    }, _this.fetchMineTransactions = function () {
+      fetch("".concat(document.location.origin, "/api/mine-transactions")).then(function (response) {
+        if (response.status === 200) {
+          alert('success');
+
+          _history.default.push('/blocks');
+        } else {
+          alert('The mine-transactions block request did not complete.');
+        }
+      });
     }, _temp));
   }
 
@@ -54342,7 +54516,10 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_Transaction.default, {
           transaction: transaction
         }));
-      }));
+      }), /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "danger",
+        onClick: this.fetchMineTransactions
+      }, "Mine Transaction"));
     }
   }]);
 
@@ -54351,74 +54528,7 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
 
 var _default = TransactionPool;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Transaction":"components/Transaction.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"../../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.css":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","./Transaction":"components/Transaction.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../history":"history.js"}],"index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -54444,6 +54554,8 @@ var _TransactionPool = _interopRequireDefault(require("./components/TransactionP
 
 require("./index.css");
 
+require("bootstrap/dist/css/bootstrap.min.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.Router, {
@@ -54453,19 +54565,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   path: "/",
   component: _App.default
 }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-  exact: true,
   path: "/blocks",
   component: _Blocks.default
 }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-  exact: true,
   path: "/conduct-transaction",
   component: _ConductTransaction.default
 }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-  exact: true,
   path: "/transaction-pool",
   component: _TransactionPool.default
 }))), document.getElementById('root'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","./components/App":"components/App.js","./components/Blocks":"components/Blocks.js","./components/ConductTransaction":"components/ConductTransaction.js","./components/TransactionPool":"components/TransactionPool.js","./index.css":"index.css"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./history":"history.js","./components/App":"components/App.js","./components/Blocks":"components/Blocks.js","./components/ConductTransaction":"components/ConductTransaction.js","./components/TransactionPool":"components/TransactionPool.js","./index.css":"index.css","bootstrap/dist/css/bootstrap.min.css":"../../node_modules/bootstrap/dist/css/bootstrap.min.css"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -54493,7 +54602,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53685" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50802" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -7,14 +7,15 @@ import Blocks from './components/Blocks';
 import ConductTransaction from './components/ConductTransaction';
 import TransactionPool from './components/TransactionPool';
 import'./index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 render(
     <Router history={history}>
         <Switch>
-            <Route exact path="/" component={App}/>  
-            <Route exact path="/blocks" component={Blocks}/>
-            <Route exact path='/conduct-transaction' component={ConductTransaction} />
-            <Route exact path='/transaction-pool' component={TransactionPool} />
+            <Route exact path="/" component={ App }/>  
+            <Route path="/blocks" component={ Blocks }/>
+            <Route path='/conduct-transaction' component={ ConductTransaction } />
+            <Route path='/transaction-pool' component={ TransactionPool } />
         </Switch>
     </Router>, 
     document.getElementById('root')

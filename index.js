@@ -24,10 +24,15 @@ const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
-//get request
+//get the blockchains
 app.get('/api/blocks', (req, res) => {
     res.json(blockchain.chain);
 
+});
+
+// get the blockchain length
+app.get('/api/blocks/length', (req, res) => {
+  res.json(blockchain.chain.length);
 });
 
 //post method of mining the block
@@ -116,44 +121,6 @@ const syncWithRootState = () => {
     });
 };
 
-//making a wallet
-const walletFoo = new Wallet();
-const walletBar = new Wallet();
-
-const generateWalletTransaction = ({ wallet, recipient, amount }) => {
-  const transaction = wallet.createTransaction({
-    recipient, amount, chain: blockchain.chain
-  });
-
-  transactionPool.setTransaction(transaction);
-};
-
-const walletAction = () => generateWalletTransaction({
-  wallet, recipient: walletFoo.publicKey, amount:5
-});
-
-const walletFooAction = () => generateWalletTransaction({
-  wallet: walletFoo, recipient: walletBar.publicKey, amount:10
-});
-
-const walletBarAction = () => generateWalletTransaction({
-  wallet: walletBar, recipient: walletBar.publicKey, amount:15
-});
-
-for(let i=0; i<5; i++){
-  if(i%3 === 0){
-    walletAction();
-    walletFooAction();
-  }else if(i%3 === 1){
-    walletAction();
-    walletBarAction();
-  }else{
-    walletFooAction();
-    walletBarAction();
-  }
-
-  transactionMiner.mineTransactions();
-}
 
 // setting the port of the apis
 let PEER_PORT;
@@ -162,7 +129,7 @@ if (process.env.GENERATE_PEER_PORT === 'true') {
     PEER_PORT = DEFAULT_PORT + Math.ceil(Math.random() * 1000);
 }
 
-const PORT = process.env.PORT || PEER_PORT || DEFAULT_PORT;
+const PORT =  PEER_PORT || DEFAULT_PORT;
 app.listen(PORT, () => {
     console.log(`listening at localhost:${PORT}`);
 

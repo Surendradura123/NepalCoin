@@ -18,7 +18,7 @@ class ConductTransaction extends Component {
     conductTransaction = () => {
         const { recipient, amount } = this.state;
 
-        fetch(`${document.location.origin}/api/transact1`, {
+        fetch(`${document.location.origin}/api/transact`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({ recipient, amount})
@@ -50,8 +50,11 @@ class ConductTransaction extends Component {
                         onChange={this.updateAmount}
                     />
                 </FormGroup>
+                <br />
                 <div>
-                    <Button variant="danger"  onClick={this.conductTransaction} />
+                    <Button variant="danger"  onClick={this.conductTransaction}>
+                        Submit 
+                    </Button>
                 </div>
             </div>
         )
