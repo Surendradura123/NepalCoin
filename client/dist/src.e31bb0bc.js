@@ -54028,13 +54028,7 @@ var App = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/_react.default.createElement(_NavbarComp.default, null), /*#__PURE__*/_react.default.createElement("img", {
         className: "logo",
         src: _nepalcoin.default
-      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the NepalCoin....."), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/blocks"
-      }, "Blocks")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/conduct-transaction"
-      }, "Conduct Transaction")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/transaction-pool"
-      }, "Transaction Pool"))), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the NepalCoin....."), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
         className: "WalletInfo"
       }, /*#__PURE__*/_react.default.createElement("div", null, "Address: ", address, " "), /*#__PURE__*/_react.default.createElement("div", null, "Balance: ", balance, " ")));
     }
@@ -54201,6 +54195,10 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Block = _interopRequireDefault(require("./Block"));
 
+var _NavbarComp = _interopRequireDefault(require("./NavbarComp"));
+
+var _nepalcoin = _interopRequireDefault(require("../assets/nepalcoin.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -54265,9 +54263,10 @@ var Blocks = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       console.log('this.state', this.state);
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, "Home")), /*#__PURE__*/_react.default.createElement("h3", null, "Blocks"), this.state.blocks.map(function (block) {
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_NavbarComp.default, null), /*#__PURE__*/_react.default.createElement("img", {
+        className: "logo",
+        src: _nepalcoin.default
+      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h3", null, "Blocks"), this.state.blocks.map(function (block) {
         return /*#__PURE__*/_react.default.createElement(_Block.default, {
           key: block.hash,
           block: block
@@ -54281,7 +54280,7 @@ var Blocks = /*#__PURE__*/function (_Component) {
 
 var _default = Blocks;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Block":"components/Block.js"}],"components/ConductTransaction.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Block":"components/Block.js","./NavbarComp":"components/NavbarComp.js","../assets/nepalcoin.png":"assets/nepalcoin.png"}],"components/ConductTransaction.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54296,6 +54295,10 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 
 var _history = _interopRequireDefault(require("../history"));
+
+var _NavbarComp = _interopRequireDefault(require("./NavbarComp"));
+
+var _nepalcoin = _interopRequireDefault(require("../assets/nepalcoin.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54378,14 +54381,15 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "ConductTransaction"
-      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, "Home"), /*#__PURE__*/_react.default.createElement("h3", null, "Conduct a Transaction"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormGroup, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
+      }, /*#__PURE__*/_react.default.createElement(_NavbarComp.default, null), /*#__PURE__*/_react.default.createElement("img", {
+        className: "logo",
+        src: _nepalcoin.default
+      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h3", null, "Conduct a Transaction"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormGroup, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
         input: "text",
         placeholder: "recipient",
         defaultValue: this.state.recipient,
         onChange: this.updateRecipent
-      })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormGroup, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
+      })), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormGroup, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
         input: "number",
         placeholder: "amount",
         defaultValue: this.state.amount,
@@ -54403,7 +54407,7 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
 ;
 var _default = ConductTransaction;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../history":"history.js"}],"components/TransactionPool.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../history":"history.js","./NavbarComp":"components/NavbarComp.js","../assets/nepalcoin.png":"assets/nepalcoin.png"}],"components/TransactionPool.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54420,6 +54424,10 @@ var _Transaction = _interopRequireDefault(require("./Transaction"));
 var _reactRouterDom = require("react-router-dom");
 
 var _history = _interopRequireDefault(require("../history"));
+
+var _NavbarComp = _interopRequireDefault(require("./NavbarComp"));
+
+var _nepalcoin = _interopRequireDefault(require("../assets/nepalcoin.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54508,9 +54516,10 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "TransactionPool"
-      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, "Home")), /*#__PURE__*/_react.default.createElement("h3", null, "Transaction Pool"), Object.values(this.state.transactionPoolMap).map(function (transaction) {
+      }, /*#__PURE__*/_react.default.createElement(_NavbarComp.default, null), /*#__PURE__*/_react.default.createElement("img", {
+        className: "logo",
+        src: _nepalcoin.default
+      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h3", null, "Transaction Pool"), Object.values(this.state.transactionPoolMap).map(function (transaction) {
         return /*#__PURE__*/_react.default.createElement("div", {
           key: transaction.id
         }, /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_Transaction.default, {
@@ -54528,7 +54537,7 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
 
 var _default = TransactionPool;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","./Transaction":"components/Transaction.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../history":"history.js"}],"index.css":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","./Transaction":"components/Transaction.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../history":"history.js","./NavbarComp":"components/NavbarComp.js","../assets/nepalcoin.png":"assets/nepalcoin.png"}],"index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -54602,7 +54611,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50802" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65424" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

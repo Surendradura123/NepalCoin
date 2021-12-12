@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import history from '../history';
+import NavbarComp from './NavbarComp';
+import logo from '../assets/nepalcoin.png';
 
 class ConductTransaction extends Component {
     state = { recipient: '', amount: 0 };
@@ -32,7 +34,9 @@ class ConductTransaction extends Component {
     render() {
         return(
             <div className='ConductTransaction'>
-                <Link to='/'>Home</Link>
+                <NavbarComp />
+                <img className="logo" src={logo}></img>
+                <br/>
                 <h3>Conduct a Transaction</h3>
                 <FormGroup>
                     <FormControl 
@@ -42,6 +46,7 @@ class ConductTransaction extends Component {
                         onChange={this.updateRecipent}
                     />
                 </FormGroup>
+                <br/>
                 <FormGroup>
                     <FormControl
                         input='number'

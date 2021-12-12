@@ -41,6 +41,7 @@ class Block extends Component {
         
         return (
             <div>
+                
                 <div>Data: { dataDisplay } </div>
 
                 <Button variant="danger" size="sm" onClick= {this.toggleTransaction}>

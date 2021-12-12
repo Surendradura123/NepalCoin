@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap';
 import Transaction from './Transaction';
 import { Link } from 'react-router-dom';
 import history from '../history';
+import NavbarComp from './NavbarComp';
+import logo from '../assets/nepalcoin.png';
 
 const POLL_INTERVAL_MS = 10000;
 
@@ -43,7 +45,9 @@ class TransactionPool extends Component {
     render() {
         return(
             <div className='TransactionPool'>
-                <div><Link to="/">Home</Link></div>
+                <NavbarComp/>
+                <img className="logo" src={logo}></img>
+                <br/>
                 <h3>Transaction Pool</h3>
                 {
                     Object.values(this.state.transactionPoolMap).map(transaction => {

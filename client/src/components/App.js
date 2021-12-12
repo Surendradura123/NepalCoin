@@ -16,27 +16,15 @@ class App extends Component{
 
     render() {
         const { address, balance } = this.state.walletInfo;
+
         return(
-            <div className="App">
+            <div className='App'>
                 <NavbarComp />
-                
-        
-                <img className="logo" src={logo}></img>
+                <img className='logo' src={logo}></img>
                 <br/>
                 <div>Welcome to the NepalCoin.....</div>
                 <br/>
-                <ul>
-                    <li>
-                        <Link to="/blocks">Blocks</Link>
-                    </li>
-                    <li>
-                        <Link to="/conduct-transaction">Conduct Transaction</Link>
-                    </li>
-                    <li>
-                        <Link to="/transaction-pool">Transaction Pool</Link>
-
-                    </li>
-                </ul>
+                
                 <br/>
                 <div className='WalletInfo'>
                     <div>Address: {address} </div>

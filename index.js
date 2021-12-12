@@ -122,7 +122,7 @@ const syncWithRootState = () => {
 };
 
 
-// setting the port of the apis
+// setting the peer port of the apis
 let PEER_PORT;
 
 if (process.env.GENERATE_PEER_PORT === 'true') {
