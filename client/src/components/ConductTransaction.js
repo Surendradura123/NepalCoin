@@ -17,10 +17,10 @@ class ConductTransaction extends Component {
         this.setState({ amount: Number(event.target.value) });
     }
 
-    conductTransaction = () => {
+     conductTransaction = () => {
         const { recipient, amount } = this.state;
 
-        fetch(`${document.location.origin}/api/transact`, {
+        fetch(`${window.location.origin}/api/transact`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({ recipient, amount})
@@ -35,13 +35,15 @@ class ConductTransaction extends Component {
         return(
             <div className='ConductTransaction'>
                 <NavbarComp />
-                <img className="logo" src={logo}></img>
                 <br/>
-                <h3>Conduct a Transaction</h3>
+                
+                <h1>Conduct a Transaction</h1>
+                <hr/>
+                <br/>
                 <FormGroup>
                     <FormControl 
                         input='text' 
-                        placeholder='recipient' 
+                        placeholder='Recipient Name' 
                         defaultValue={this.state.recipient}
                         onChange={this.updateRecipent}
                     />

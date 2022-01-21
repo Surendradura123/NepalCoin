@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Block from "./Block";
 import NavbarComp from "./NavbarComp";
 import logo from '../assets/nepalcoin.png';
+import { Container } from "react-bootstrap";
 
 class Blocks extends Component{
     state = { blocks: []};
@@ -18,18 +19,26 @@ class Blocks extends Component{
         console.log('this.state', this.state);
 
         return(
-            <div>
+            <div className="App">
                 <NavbarComp />
-                <img className="logo" src={logo}></img>
                 <br/>
-                <h3>Blocks</h3>
-                {
-                    this.state.blocks.map(block => {
-                        return(
-                            <Block key={block.hash} block = {block} />
-                        );
-                    })
-                }
+                <div>
+                    <img className="logo" src={logo}></img>
+                </div>
+                <br/>
+                <h3>BlockChain</h3>
+                <p>----------------------------</p>
+                <div>
+                    {
+                        this.state.blocks.map(block => {
+                            return(
+                                <Block key={block.hash} block = {block} />
+                            );
+                        })
+                    }
+                </div>
+
+                
             </div>
         );
     }

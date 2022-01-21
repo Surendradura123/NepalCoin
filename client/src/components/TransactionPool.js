@@ -11,14 +11,14 @@ const POLL_INTERVAL_MS = 10000;
 class TransactionPool extends Component {
     state = { transactionPoolMap: {} };
 
-    fetchTransactionPoolMap = () => {
-        fetch(`${document.location.origin}/api/transaction-pool-map`)
+    fetchTransactionPoolMap() {
+        fetch(`${window.location.origin}/api/transaction-pool-map`)
             .then(response => response.json())
             .then(json => this.setState({ transactionPoolMap: json }));
     }
 
-    fetchMineTransactions = () => {
-        fetch(`${document.location.origin}/api/mine-transactions`)
+    fetchMineTransactions (){
+        fetch(`${window.location.origin}/api/mine-transactions`)
           .then(response => {
             if (response.status === 200) {
               alert('success');
@@ -46,9 +46,10 @@ class TransactionPool extends Component {
         return(
             <div className='TransactionPool'>
                 <NavbarComp/>
-                <img className="logo" src={logo}></img>
                 <br/>
-                <h3>Transaction Pool</h3>
+                <h1>Transaction Pool</h1>
+                <hr/>
+                <br/>
                 {
                     Object.values(this.state.transactionPoolMap).map(transaction => {
                         return(

@@ -20,15 +20,19 @@ class App extends Component{
         return(
             <div className='App'>
                 <NavbarComp />
+                <br/>
+                <div>
                 <img className='logo' src={logo}></img>
+                </div>
                 <br/>
                 <div>Welcome to the NepalCoin.....</div>
                 <br/>
                 
                 <br/>
                 <div className='WalletInfo'>
-                    <div>Address: {address} </div>
-                    <div>Balance: {balance} </div>
+                    <div><h1>Wallet Information</h1></div>
+                    <div> Address:{address} </div>
+                    <div> Balance: {balance} </div>
                 </div>
             </div>
         );
